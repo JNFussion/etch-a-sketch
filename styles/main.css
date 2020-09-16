@@ -1,32 +1,48 @@
+body{
+    background-color: rgb(214, 214, 214);
+}
+
 #main-page{
-    background-color: rgb(236, 137, 15);
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10% 80%;
+    justify-items: center;
 }
 
 
 #nav{
     display: flex;
     padding-left: 2rem;
-    background-color: chartreuse;
+    background-color: rgb(255, 172, 172);
     align-items: center;
     justify-content: center;
+    width: 650px;
 }
 #content{
-    background-color: crimson;
-    padding: 1rem;
+    background-color: rgb(161, 161, 161);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 650px;
+    height: 650px;
 }
 
 #canvas{
     display: grid;
-    width: 100%;
-    height: 100%;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
     background-color: white;
-    grid-template-rows: repeat(16, 16fr);
-    grid-template-columns: repeat(16 ,16fr);
+    
+}
+#btn{
+    width: 15%;
+    height: 40%;
+    border: thin solid hsl(0, 100%, 74%);
+    border-radius: 2px;
 }
 .cell{
-    border: 1px solid black;
+    border: 0.5px solid black;
+    box-sizing: border-box;
 }

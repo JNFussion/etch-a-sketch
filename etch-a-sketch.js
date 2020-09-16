@@ -1,29 +1,37 @@
-const container = document.querySelector('#canvas');
+const canvas = document.querySelector("#canvas");
+const button = document.getElementById("btn");
 
 
-for(let i = 0; i < 256; i++){
-    const div = document.createElement('div');
-    div.textContent = i;
-    div.setAttribute('id', i)
-    div.classList.add('cell');
-    container.appendChild(div);
+function main(){
+    let gridSize = prompt("How many square per side do you want?");
+    createGrid(gridSize);
+    button.addEventListener('click', reset);
+
 }
-
-const cells = document.querySelectorAll('.cell');
-cells.forEach(cell => cell.addEventListener('mouseenter',draw));
-
-
-const clearButton = document.querySelector('#clear');
-clearButton.addEventListener('click', clearCanvas);
-
-
-
-function clearCanvas(){
-    cells.forEach( cell => cell.style.backgroundColor = 'white')
-
+function createGrid(size){
+    
+    for(let i = 0; i < size**2; i++){
+        let div = document.createElement('div');
+        canvas.appendChild(div);
+        div.setAttribute('id', i);
+        div.classList.add('cell');
+        div.addEventListener('mouseover',draw);
+        
+    }
+    canvas.style.gridTemplateRows = `repeat(${size}, ${1/size*100}%)`;
+    canvas.style.gridTemplateColumns = `repeat(${size}, ${1/size*100}%)`;
 }
 
 function draw(e){
-    e.target.style.backgroundColor = 'black';
-    
+    e.target.style.backgroundColor = randomColor();  
 }
+
+function reset(){
+    location.reload();
+}
+
+function randomColor(){
+    return '#' + Math.floor(Math.random() * 16777215).toString(16)
+}
+
+main();
